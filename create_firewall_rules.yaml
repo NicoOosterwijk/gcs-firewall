@@ -1,0 +1,6 @@
+---
+- name: Create Firewall Rules on Google Cloud Platform
+  gather_facts: False
+  hosts: myMBP
+  roles:
+    - { role: create, tags: 'create' }
