@@ -7,7 +7,7 @@ firewall_admin_rules:
   target: test-stretto-netw
   protocol: tcp
   action: ALLOW
- 
+
 firewall_collab_rules:
   port: 8990,8989
   name: demo-collab
@@ -16,7 +16,7 @@ firewall_collab_rules:
   target: test-stretto-netw
   protocol: tcp
   action: ALLOW
- 
+
 firewall_db_rules:
   port: 2315,9282,9280
   name: demo-db
@@ -25,7 +25,7 @@ firewall_db_rules:
   target: test-stretto-netw
   protocol: tcp
   action: ALLOW
- 
+
 firewall_health_rules:
   rules: all
   name: demo-health1
@@ -33,46 +33,64 @@ firewall_health_rules:
   source_ranges: 209.85.152.0/22,209.85.204.0/22,35.191.0.0/16
   target: test-stretto-netw
   action: ALLOW
- 
-firewall_admin_rules:
-  port: 8088
-  name: demo-admin8
+
+firewall_maestro_rules:
+  port: 8323
+  name: demo-maestro-adminhttp
+  project: nicos-101-project
+  source_ranges: 10.164.0.0/20
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+
+firewall_prov_rules:
+  port: 9200,9202,9204,9206,9208,9210
+  name: demo-prov
   project: nicos-101-project
   source_ranges: 0.0.0.0/0
   target: test-stretto-netw
   protocol: tcp
   action: ALLOW
- 
-firewall_admin_rules:
-  port: 8088
-  name: demo-admin8
+
+firewall_push_rules:
+  port: 9010
+  name: demo-push
   project: nicos-101-project
   source_ranges: 0.0.0.0/0
   target: test-stretto-netw
   protocol: tcp
   action: ALLOW
- 
-firewall_admin_rules:
-  port: 8088
-  name: demo-admin8
+
+firewall_redis_rules:
+  port: 6379,16379
+  name: demo-redis
   project: nicos-101-project
   source_ranges: 0.0.0.0/0
   target: test-stretto-netw
   protocol: tcp
   action: ALLOW
- 
-firewall_admin_rules:
-  port: 8088
-  name: demo-admin8
+
+firewall_sync_rules:
+  port: 8889
+  name: demo-sync
   project: nicos-101-project
   source_ranges: 0.0.0.0/0
   target: test-stretto-netw
   protocol: tcp
   action: ALLOW
- 
-firewall_admin_rules:
-  port: 8088
-  name: demo-admin8
+
+firewall_us_rules:
+  port: 8082
+  name: demo-userservices
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+
+firewall_xmpp_rules:
+  port: 5222
+  name: demo-xmpp
   project: nicos-101-project
   source_ranges: 0.0.0.0/0
   target: test-stretto-netw
