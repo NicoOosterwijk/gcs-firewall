@@ -23,11 +23,11 @@ There is a section for every rule with the following items:
 - protocol
 - action
 
-You can refer to [gcloud compute firewall-rules documetation](https://cloud.google.com/sdk/gcloud/reference/compute/firewall-rules/) for more details.
+You can refer to [gcloud compute firewall-rules documentation](https://cloud.google.com/sdk/gcloud/reference/compute/firewall-rules/) for more details.
 
 Run the create_firewall_rules playbook: **ansible-playbook create_firewall_rules.yaml**
 
 # Delete
 ## Setup the preferred firewall rule items to delete in the defaults var file in the delete role.
-Then run the delete-firewall_rules playbook: **ansible-playbook delete_firewall_rules.yaml**
+Then run the delete_firewall_rules playbook: **ansible-playbook delete_firewall_rules.yaml**
 
