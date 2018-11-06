@@ -1,0 +1,10 @@
+---
+firewall_admin_rules:
+  port: 8080
+  name: demo-admin
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 
