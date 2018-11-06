@@ -1,0 +1,25 @@
+---
+# vim:ft=ansible:
+- name: Check if Google Cloud SDK is installed
+  command: gcloud version
+  register: gcloud_installed
+  changed_when: false
+  ignore_errors: yes
+
+- fail:
+    msg: "Please make sure Google Cloud SDK is installed before executing the role."
+  when: gcloud_installed | failed
+
+
+- name: Check if rule is present
+  command: "gcloud compute firewall-rules list --filter='name:{{ item }}' --format='value(NAME)'"
+  register: rule_present
+  changed_when: false
+  ignore_errors: yes
+  with_items: "{{ delete_firewall_rules.name }}"
+  tags: check
+
+- name: Delete rule on google cloud platform
+  command: gcloud compute firewall-rules delete {{ item.item }} --quiet
+  when: item.stdout != ""
+  with_items: "{{ rule_present.results }}"

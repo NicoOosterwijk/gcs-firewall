@@ -1,0 +1,6 @@
+---
+- name: Delete Firewall Rules on Google Cloud Platform
+  gather_facts: False
+  hosts: myMBP
+  roles:
+    - { role: delete, tags: 'delete' }

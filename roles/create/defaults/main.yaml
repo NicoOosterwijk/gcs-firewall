@@ -1,0 +1,81 @@
+---
+firewall_admin_rules:
+  port: 8080
+  name: demo-admin
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 
+firewall_collab_rules:
+  port: 8990,8989
+  name: demo-collab
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 
+firewall_db_rules:
+  port: 2315,9282,9280
+  name: demo-db
+  project: nicos-101-project
+  source_ranges: 10.164.0.0/20
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 
+firewall_health_rules:
+  rules: all
+  name: demo-health1
+  project: nicos-101-project
+  source_ranges: 209.85.152.0/22,209.85.204.0/22,35.191.0.0/16
+  target: test-stretto-netw
+  action: ALLOW
+ 
+firewall_admin_rules:
+  port: 8088
+  name: demo-admin8
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 
+firewall_admin_rules:
+  port: 8088
+  name: demo-admin8
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 
+firewall_admin_rules:
+  port: 8088
+  name: demo-admin8
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 
+firewall_admin_rules:
+  port: 8088
+  name: demo-admin8
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 
+firewall_admin_rules:
+  port: 8088
+  name: demo-admin8
+  project: nicos-101-project
+  source_ranges: 0.0.0.0/0
+  target: test-stretto-netw
+  protocol: tcp
+  action: ALLOW
+ 

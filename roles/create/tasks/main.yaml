@@ -15,10 +15,7 @@
   register: admin_rule_present
   changed_when: false
   ignore_errors: yes
-  tags: check_admin
-
-- debug: var=admin_rule_present.stdout
-  tags: check_admin
+  tags: admin
 
 - name: Set admin rule on google cloud platform
   command: >
@@ -30,7 +27,33 @@
     --action="{{ firewall_admin_rules.action }}"
     --rules="{{ firewall_admin_rules.protocol }}:{{ firewall_admin_rules.port }}"
     --source-ranges="{{ firewall_admin_rules.source_ranges }}"
-    --target="{{ firewall_admin_rules.target }}"
+    --target-tags="{{ firewall_admin_rules.target }}"
 
   changed_when: false
   when: admin_rule_present.stdout == ""
+  tags: admin
+
+- name: Check if health rule is already present
+  command: "gcloud compute firewall-rules list --filter='name:{{ firewall_health_rules.name }}' --format='value(NAME)'"
+  register: health_rule_present
+  changed_when: false
+  ignore_errors: yes
+  tags: health
+
+- name: Set health rule on google cloud platform
+  command: >
+    gcloud compute firewall-rules create "{{ firewall_health_rules.name }}"
+    --project="{{ firewall_health_rules.project }}"
+    --direction=INGRESS
+    --priority=1000
+    --network=default
+    --action="{{ firewall_health_rules.action }}"
+    --rules="{{ firewall_health_rules.rules }}"
+    --source-ranges="{{ firewall_health_rules.source_ranges }}"
+    --target-tags="{{ firewall_health_rules.target }}"
+
+  changed_when: false
+  when: health_rule_present.stdout == ""
+  tags: health
+
+
