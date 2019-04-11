@@ -6,7 +6,8 @@
   changed_when: false
   ignore_errors: yes
 
-- fail:
+- name: Instructions to add GCS SDK
+  fail:
     msg: "Please make sure Google Cloud SDK is installed before executing the role."
   when: gcloud_installed is failed
 
@@ -32,3 +33,26 @@
   changed_when: false
   when: admin_rule_present.stdout == ""
   tags: admin
+
+- name: Check if ssh rule is already present
+  command: "gcloud compute firewall-rules list --filter='name:{{ firewall_ssh_rules.name }}' --format='value(NAME)'"
+  register: ssh_rule_present
+  changed_when: false
+  ignore_errors: yes
+  tags: ssh
+
+- name: Set ssh rule on google cloud platform
+  command: >
+      gcloud compute firewall-rules create "{{ firewall_ssh_rules.name }}"
+      --project="{{ firewall_ssh_rules.project }}"
+      --direction=INGRESS
+      --priority=1000
+      --network=default
+      --action="{{ firewall_ssh_rules.action }}"
+      --rules="{{ firewall_ssh_rules.protocol }}:{{ firewall_ssh_rules.port }}"
+      --source-ranges="{{ firewall_ssh_rules.source_ranges }}"
+      --target-tags="{{ firewall_ssh_rules.target }}"
+
+  changed_when: false
+  when: ssh_rule_present.stdout == ""
+  tags: ssh

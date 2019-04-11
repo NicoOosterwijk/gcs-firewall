@@ -2,3 +2,5 @@
 delete_firewall_rules:
   name:
     - demo-admin
+    - default-allow-rdp
+    - default-allow-ssh

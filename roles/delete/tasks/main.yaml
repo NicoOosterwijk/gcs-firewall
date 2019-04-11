@@ -8,7 +8,7 @@
 
 - fail:
     msg: "Please make sure Google Cloud SDK is installed before executing the role."
-  when: gcloud_installed | failed
+  when: gcloud_installed is failed
 
 
 - name: Check if rule is present

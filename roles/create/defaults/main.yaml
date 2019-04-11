@@ -7,3 +7,12 @@ firewall_admin_rules:
   target: test-nico-netw
   protocol: tcp
   action: ALLOW
+
+firewall_ssh_rules:
+  port: 22
+  name: demo-ssh
+  project: nico-1234
+  source_ranges: 0.0.0.0/0
+  target: test-nico-netw
+  protocol: tcp
+  action: ALLOW
