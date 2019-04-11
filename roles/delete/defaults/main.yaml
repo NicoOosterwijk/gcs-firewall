@@ -1,8 +1,4 @@
 ---
 delete_firewall_rules:
-  name: 
-    - demo-admin8
-    - demo-health1
-    - etcetera
-
-
+  name:
+    - demo-admin
